@@ -40,6 +40,8 @@ class KNN(object):
 
 
 
+
+
 # légende pour comprendre : 
 	# x = le nouveau oint à prédire
 	# self.x_train = toutes les lignes d'entraînement (le dataset entier)
@@ -50,7 +52,9 @@ class KNN(object):
 	# self.n_neighbors = le nombre de voisins à considérer (notre k)
 	# distances.append(distance) = la liste de toutes les distances calculées
 	# neighbor = l'un des voisins les plus proche de ce que l'on souahite prédire
-	# y_label_nearest_neighbors = la valeur y des index dont les distances sont les plus proche de x
+	# y_label_nearest_neighbors = liste des valeurs y des N voisins les plus proches de x
+	# y_label_nearest = un item de y_label_nearest_neighbors
+	# target_distribution = liste de la distribution de y pour y_label_nearest_neighbors
 
 
 
