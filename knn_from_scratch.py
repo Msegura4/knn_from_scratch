@@ -65,7 +65,19 @@ class KNN(object):
 			"recall": recall,
 		}
 
-
+	def grid_search(self, k_values, x_test, y_test):
+		best_k = None
+		best_f1_score = 0
+		for value in k_values:
+			self.n_neighbors = value
+			metrics = self.evaluate(x_test, y_test)
+			if metrics["f1"] > best_f1_score:
+				best_f1_score = metrics["f1"]
+				best_k = value
+		return {
+			"best_k": best_k,
+			"best_f1_score": best_f1_score
+		}
 
 
 
