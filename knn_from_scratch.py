@@ -69,7 +69,6 @@ class KNN(object):
 
 
 
-
 # légende pour comprendre : 
 	# x = le nouveau oint à prédire
 	# self.x_train = toutes les lignes d'entraînement (le dataset entier)
@@ -83,7 +82,9 @@ class KNN(object):
 	# y_label_nearest_neighbors = liste des valeurs y des N voisins les plus proches de x
 	# y_label_nearest = un item de y_label_nearest_neighbors
 	# target_distribution = liste de la distribution de y pour y_label_nearest_neighbors
-	# 
+	# x_test et y_test = partie de la donnée que l'on a mis de côté et que l'on va utiliser pour tester les prédictione t leur fiabilité
+	# y_pred_index = un item du résultat de la focntion predict (x_test[index] étant un élèment du data set de test)
+	# x_true_index = la bonne réponse pour valider ou invalider y_pred_index (pareil il s'agit ici de la bonne réponse pour un élèment de x_test)
 
 
 
