@@ -97,6 +97,8 @@ class KNN(object):
 	# x_test et y_test = partie de la donnée que l'on a mis de côté et que l'on va utiliser pour tester les prédictione t leur fiabilité
 	# y_pred_index = un item du résultat de la focntion predict (x_test[index] étant un élèment du data set de test)
 	# x_true_index = la bonne réponse pour valider ou invalider y_pred_index (pareil il s'agit ici de la bonne réponse pour un élèment de x_test)
+	# best_k = meilleur k (cf. n_neighbord) pour avoir le meilleur f1_score paramétré sur None car il sera mis à jour grâce à une boucle for
+	# best_f1_score = meilleur score associé au best_k
 
 
 
