@@ -1,0 +1,2 @@
+# Dépendances Python
+# Ajouter les packages nécessaires ici, ex: numpy==1.26.0
