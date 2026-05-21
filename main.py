@@ -18,7 +18,8 @@ model.fit(x_train, y_train)
 
 # 5. Grid search pour trouver le meilleur k
 results = model.grid_search(
-    k_values=[1, 3, 5, 7, 9],
+    setting_model="n_neighbors",
+    setting_values=[1, 3, 5, 7, 9],
     x_test=x_test,
     y_test=y_test
 )
