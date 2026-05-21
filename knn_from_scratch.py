@@ -1,4 +1,6 @@
-class KNN(object):
+from evaluate_and_opti_ml_model import EVALOPTI
+
+class KNN(EVALOPTI):
 
 	def __init__(self, n_neighbors=None):
 		self.n_neighbors = n_neighbors
@@ -38,50 +40,6 @@ class KNN(object):
 				target_distribution[y_label_nearest] = 1
 
 		return max(target_distribution, key=lambda x: target_distribution[x])
-
-
-	def evaluate(self, x_test, y_test):
-		labels_target = list(set(y_test))
-		y_pred = []
-		for index in range(len(x_test)):
-			y_pred.append(self.predict(x_test[index]))
-
-		f1_scores = []
-		for label in labels_target:
-			TP = 0
-			FP = 0
-			FN = 0
-			for index in range(len(y_pred)):
-				if y_pred[index] == label and y_test[index] == label:
-					TP = TP + 1
-				elif y_pred[index] == label and y_test[index] != label:
-					FP = FP + 1
-				elif y_pred[index] != label and y_test[index] == label:
-					FN = FN + 1
-
-			precision = TP / (TP + FP)
-			recall = TP / (TP + FN)
-			f1 = (2 * precision * recall) / (precision + recall)
-			f1_scores.append(f1)
-
-		f1_macro = sum(f1_scores) / len(f1_scores)
-        
-		return {"f1_macro": f1_macro}
-
-
-	def grid_search(self, k_values, x_test, y_test):
-		best_k = None
-		best_f1_score_macro = 0
-		for value in k_values:
-			self.n_neighbors = value
-			metrics = self.evaluate(x_test, y_test)
-			if metrics["f1_macro"] > best_f1_score_macro:
-				best_f1_score_macro = metrics["f1_macro"]
-				best_k = value
-		return {
-			"best_k": best_k,
-			"best_f1_score_macro": best_f1_score_macro
-		}
 
 
 
