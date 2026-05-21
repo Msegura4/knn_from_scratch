@@ -10,6 +10,7 @@ class KNN(object):
 		self.y_train = y_train
 
 	def predict(self, x):
+		# calcul des distances
 		distances = []
 		for x_train_point in self.x_train:
 			distance = 0
@@ -19,13 +20,16 @@ class KNN(object):
 			distance = distance ** 0.5
 			distances.append(distance)
 
+		# récupère les N voisins les plus proches (un tuple, les distances + les index associés)
 		sorted_distances = sorted(enumerate(distances), key=lambda x: x[1])
 		n_nearest_neighbors = sorted_distances[:self.n_neighbors]
 
+		# récupère le label y des N voisin les plus proche grâce à l'index (cf. "[neighbor[0]]" )
 		y_label_nearest_neighbors = []
 		for neighbor in n_nearest_neighbors:
 			y_label_nearest_neighbors.append(self.y_train[neighbor[0]])
 
+		# récupère la distribution des labels que l'on a récupèré précèdemment (les labels y les plus fréquents)
 		target_distribution = {} 
 		for y_label_nearest in y_label_nearest_neighbors:
 			if y_label_nearest in target_distribution:
